@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="zh_CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>图片生成器</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/layer/3.1.0/theme/default/layer.css" >
+    <link rel="stylesheet" href="./css/style.min.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">图片生成器</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </nav>
+    </header>
+    <div style="margin: 3% 10% 2% 10%">
+        <div class="container">
+            <div class="top-container">
+                <div class="file-choose">
+                    <input type="file" class="d-none file-img"/>
+                    <a href="javascript:$('.file-img').click();" role="button" class="btn btn-primary btn-choose">
+                        <i class="fa fa-upload"></i>
+                        选择图片
+                    </a>
+                </div>
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <input type="text" class="set-width form-control" placeholder="设置图片宽度">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="text" class="set-height form-control" placeholder="设置图片高度">
+                    </div>
+                    <div class="form-group mb-2">
+                        单位像素，图片默认大小 320 * 530
+                    </div>
+                </form>
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <input type="text" class="set-fabric form-control" placeholder="FABRIC 设置材质">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="text" class="set-color form-control" placeholder="COLOR 设置颜色">
+                    </div>
+                </form>
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <input type="text" class="set-size form-control" placeholder="设置尺寸">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="text" class="set-shoulder form-control" placeholder="设置肩宽">
+                    </div>
+                    <div class="form-group mb-2">
+                        <input type="text" class="set-bust form-control" placeholder="设置胸围">
+                    </div>
+                </form>
+                <form class="form-inline">
+                    <div class="form-group mb-2">
+                        <input type="text" class="set-sleeve form-control" placeholder="设置袖长">
+                    </div>
+                    <div class="form-group mx-sm-3 mb-2">
+                        <input type="text" class="set-clothes form-control" placeholder="设置衣长">
+                    </div>
+                    <div class="form-group mb-2">
+                        <input type="text" class="set-hem form-control" placeholder="设置下摆围">
+                    </div>
+                </form>
+                <div class="img-download">
+                    <a href="javascript:;" role="button" class="btn btn-primary mr-3 btn-create">
+                        生成图片
+                    </a>
+                    <a href="javascript:;" role="button" class="btn btn-primary btn-download" download="downloadImg">
+                        <i class="fa fa-download"></i>
+                        下载图片
+                    </a>
+                </div>
+            </div>
+
+            <div class="img-area">
+                <div class="media">
+                    <div class="mr-3">
+                        <div class="img-box">
+                            <img class="img-preview" style="width:320px;height:530px;" src="http://www.atool.org/placeholder.png?size=320x530" alt="img">
+                        </div>
+                        <div class="img-remark">
+                            <p><i class="fa fa-star"></i> 由于测量方法不同，尺寸上可能存在2-4cm误差</p>
+                            <p><i class="fa fa-star"></i> 屏幕分辨率不同，颜色或许存在一些色差</p>
+                        </div>
+                    </div>
+                    <div class="media-body">
+                        <div class="attr-box">
+                            <div class="mt-3">FABRIC <span class="get-fabric mx-sm-3">牛仔</span></div>
+                            <div class="mt-4">COLOR  <span class="get-color mx-sm-3">蓝色</span></div>
+                            <table class="table mt-4 mb-5">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">尺寸(cm)</th>
+                                        <th scope="col">肩宽</th>
+                                        <th scope="col">胸围</th>
+                                        <th scope="col">袖长</th>
+                                        <th scope="col">衣长</th>
+                                        <th scope="col">下摆围</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="get-size">均码</td>
+                                        <td class="get-shoulder">-</td>
+                                        <td class="get-bust">90</td>
+                                        <td class="get-sleeve">-</td>
+                                        <td class="get-clothes">43</td>
+                                        <td class="get-hem">74</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="set-attr">
+                                <div class="row">
+                                    <div class="col">版型</div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>修身</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>适中</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>宽松</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">厚薄</div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>薄</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>适中</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>厚</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">透视</div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>透</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>适中</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>不透</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">弹力</div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>有</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>适中</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>无</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">里衬</div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>有</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>部分</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>无</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col">洗涤</div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>干洗</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>机洗</span>
+                                        </label>
+                                    </div>
+                                    <div class="col">
+                                        <label class="radio-check">
+                                            <input type="checkbox">
+                                            <i></i>
+                                            <span>手洗</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="img-canvas">
+            </div>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js"></script>
+    <script src="https://cdn.bootcss.com/layer/3.1.0/layer.js"></script>
+    <script src="https://cdn.bootcss.com/html2canvas/0.5.0-beta4/html2canvas.js"></script>
+
+    <script>
+         var canvas = '';
+        $('.btn-create').on('click', function () {
+            $('.img-canvas').children('canvas').remove();
+            html2canvas($('.img-area')).then(function (cvs) {
+                canvas = cvs;
+                $('.img-canvas').append(canvas);
+            });
+            layer.msg('图片生成完成');
+        });
+        $('.btn-download').on('click', function () {
+            $(".btn-download").attr('href', canvas.toDataURL());
+        });
+
+        // 选择按钮
+        var $chooseImg = $('.btn-choose');
+        // 文件上传按钮
+        var fileImg = $('.file-img').get(0);
+        // 图片
+        var $imgPreview = $('.img-preview');
+        // 判断浏览器是否支持 FileReader
+        if (typeof FileReader === undefined) {
+            layer.msg('抱歉，你的浏览器不支持 FileReader');
+            $chooseImg.attr('disabled','disabled');
+        }
+        // 监听文件上传
+        $('.file-img').on('change', function(){
+            readFile(fileImg, $imgPreview);
+        });
+        // 监听参数输入
+        $('.set-width').on('change', function () {
+            $imgPreview.css('width', $(this).val());
+        });
+        $('.set-height').on('change', function () {
+            $imgPreview.css('height', $(this).val());
+        });
+        $('.set-fabric').on('change', function () {
+            $('.get-fabric').text($(this).val());
+        });
+        $('.set-color').on('change', function () {
+            $('.get-color').text($(this).val());
+        });
+        $('.set-size').on('change', function () {
+            $('.get-size').text($(this).val());
+        });
+        $('.set-shoulder').on('change', function () {
+            $('.get-shoulder').text($(this).val());
+        });
+        $('.set-bust').on('change', function () {
+            $('.get-bust').text($(this).val());
+        });
+        $('.set-sleeve').on('change', function () {
+            $('.get-sleeve').text($(this).val());
+        });
+        $('.set-clothes').on('change', function () {
+            $('.get-clothes').text($(this).val());
+        });
+        $('.set-hem').on('change', function () {
+            $('.get-hem').text($(this).val());
+        });
+        // 读取文件显示
+        function readFile(file, img) {
+            var file = file.files[0];
+            var reader = new FileReader();
+            if (!/image\/\w+/.test(file.type)) {
+                layer.msg('文件必须为图片！');
+                return false;
+            }
+            reader.onload = function (e) {
+                img.attr('src', reader.result);
+            }
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                img.attr('src', '');
+            }
+        }
+    </script>
+</body>
+
+</html>
